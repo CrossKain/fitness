@@ -1,33 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import { RoutesObject } from './lib/routes'
+import MainPage from './pages/main'
+import CoursePage from './pages/course'
+import NotFoundPage from './pages/notfound'
+import ProfilePage from './pages/profile'
+import ResetPasswordPage from './pages/reset-password'
+import SignInPage from './pages/signin'
+import SignUpPage from './pages/signup'
+import WorkoutsPage from './pages/workouts'
+import WorkoutPage from './pages/workout-page'
+import Layout from './components/shared/layout'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+     <Routes>
+      <Route element={<Layout/>}>
+      <Route path={RoutesObject.MAIN} element={<MainPage/>}/>
+      <Route path={RoutesObject.COURSE} element={<CoursePage/>}/>
+      <Route path={RoutesObject.NOTFOUND} element={<NotFoundPage/>}/>
+      <Route path={RoutesObject.PROFILE} element={<ProfilePage/>}/>
+      <Route path={RoutesObject.RESETPASSWORD} element={<ResetPasswordPage/>}/>
+      <Route path={RoutesObject.SIGNIN} element={<SignInPage/>}/>
+      <Route path={RoutesObject.SIGNUP} element={<SignUpPage/>}/>
+      <Route path={RoutesObject.WORKOUTS} element={<WorkoutsPage/>}/>
+      <Route path={RoutesObject.WORKOUT_PAGE} element={<WorkoutPage/>}/>
+      </Route>
+     </Routes>
     </>
   )
 }
